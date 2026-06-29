@@ -48,6 +48,7 @@ export default function About() {
                 src="/images/family.png"
                 alt="Charles Spivey with family in North Port, FL"
                 className="about__portrait-img"
+                loading="lazy"
               />
             </div>
 
