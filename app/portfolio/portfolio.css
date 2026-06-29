@@ -1,0 +1,225 @@
+/* ── Portfolio page — scoped with pf- prefix ───────────────────────────────── */
+
+.pf-page {
+  background: #0A0A0A;
+  color: #FAFAF8;
+  min-height: 100dvh;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.pf-header {
+  position: fixed;
+  top: 2.25rem;
+  left: 3rem;
+  z-index: 100;
+}
+
+.pf-wordmark {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0.05rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pf-name {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #FAFAF8;
+  letter-spacing: -0.03em;
+}
+
+.pf-descriptor {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #E05C3A;
+  letter-spacing: -0.02em;
+}
+
+/* ── Stage ──────────────────────────────────────────────────────────────────── */
+.pf-stage {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #0A0A0A;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────────── */
+.pf-card {
+  --card-w: 560px;
+  --card-r: 14px;
+  --img-r:  7px;
+  --pad:    10px;
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: var(--card-w);
+  aspect-ratio: 1280 / 900;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition:
+    transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity   0.42s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.pf-card-glow {
+  position: absolute;
+  top: -18px; bottom: -18px;
+  left: -32px; right: -32px;
+  background: #E05C3A;
+  border-radius: 28px;
+  filter: blur(38px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pf-card-face {
+  position: absolute;
+  inset: 0;
+  background: #E05C3A;
+  border-radius: var(--card-r);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.pf-card-img {
+  position: absolute;
+  top: var(--pad); left: var(--pad);
+  right: var(--pad); bottom: var(--pad);
+  border-radius: var(--img-r);
+  overflow: hidden;
+  background: #111;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pf-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+}
+
+/* ── Logo section ───────────────────────────────────────────────────────────── */
+.pf-logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44vh;
+  padding: 5rem 3rem;
+  background: #0A0A0A;
+}
+
+.pf-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.pf-logo-row {
+  display: flex;
+  align-items: flex-end;
+}
+
+.pf-logo-name {
+  font-weight: 800;
+  font-size: clamp(72px, 11vw, 148px);
+  letter-spacing: -0.04em;
+  color: #FAFAF8;
+}
+
+.pf-logo-dot {
+  width: clamp(11px, 1.65vw, 22px);
+  height: clamp(11px, 1.65vw, 22px);
+  background: #E05C3A;
+  flex-shrink: 0;
+  margin-left: clamp(5px, 0.7vw, 9px);
+  margin-bottom: clamp(8px, 1.2vw, 16px);
+  display: inline-block;
+}
+
+.pf-logo-sub {
+  font-weight: 300;
+  font-size: clamp(18px, 2.75vw, 38px);
+  letter-spacing: 0.05em;
+  color: #E05C3A;
+  margin-top: clamp(4px, 0.6vw, 8px);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+.pf-footer {
+  border-top: 1px solid rgba(250, 250, 248, 0.07);
+  padding: 28px 3rem;
+  background: #0A0A0A;
+}
+
+.pf-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.pf-footer-logo {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: #FAFAF8;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pf-footer-logo em {
+  font-weight: 300;
+  font-style: italic;
+  color: #E05C3A;
+}
+
+.pf-footer-copy {
+  font-size: 12px;
+  color: rgba(250, 250, 248, 0.35);
+  margin-right: auto;
+  letter-spacing: 0.04em;
+}
+
+.pf-footer-email {
+  font-size: 12px;
+  color: rgba(250, 250, 248, 0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pf-footer-email:hover { color: #E05C3A; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pf-card { --card-w: 380px; --pad: 8px; }
+}
+
+@media (max-width: 700px) {
+  .pf-card { --card-w: 290px; --card-r: 10px; --pad: 7px; --img-r: 5px; }
+  .pf-header { top: 1.5rem; left: 1.75rem; }
+  .pf-logo-section { padding: 4rem 2rem; min-height: 36vh; }
+  .pf-footer { padding: 24px 2rem; }
+  .pf-footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .pf-footer-copy  { margin-right: 0; }
+}
+
+@media (max-width: 400px) {
+  .pf-card { --card-w: 240px; }
+}
