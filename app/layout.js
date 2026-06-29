@@ -1,6 +1,8 @@
 import { Outfit } from 'next/font/google';
 import { Geist_Mono } from 'next/font/google';
 import './globals.css';
+import CursorFollower from '@/components/CursorFollower';
+import PortfolioFloatBtn from '@/components/PortfolioFloatBtn';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -89,7 +91,11 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <PortfolioFloatBtn />
+        <CursorFollower />
+      </body>
     </html>
   );
 }
