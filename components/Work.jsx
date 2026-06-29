@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 const WORK_CARDS = [
   {
@@ -137,6 +138,12 @@ export default function Work({ onOpenLightbox }) {
           <div className="portfolio-divider__rule" aria-hidden="true" />
           <span className="portfolio-divider__label">Selected work</span>
           <div className="portfolio-divider__rule" aria-hidden="true" />
+        </div>
+
+        <div className="portfolio-cta-row" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
+          <Link href="/portfolio" className="work-card__link" style={{ fontSize: '14px' }}>
+            View full portfolio <i className="ph ph-arrow-right" aria-hidden="true" />
+          </Link>
         </div>
 
         <div className="portfolio-rail-wrap">
