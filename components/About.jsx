@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import { EnvelopeSimple } from '@phosphor-icons/react';
+
 const AREAS = ['North Port', 'Venice', 'Englewood', 'Port Charlotte', 'Osprey', 'Southwest FL'];
 
 export default function About() {
@@ -37,18 +40,19 @@ export default function About() {
               className="about__email reveal-up"
               style={{ '--delay': '120ms' }}
             >
-              <i className="ph-duotone ph-envelope-simple" aria-hidden="true" />
+              <EnvelopeSimple weight="duotone" aria-hidden="true" />
               charles@chuckdesign.com
             </a>
           </div>
 
           <div className="about__areas">
             <div className="about__portrait reveal-up">
-              <img
+              <Image
                 src="/images/family.png"
                 alt="Charles Spivey with family in North Port, FL"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="about__portrait-img"
-                loading="lazy"
               />
             </div>
 

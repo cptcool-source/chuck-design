@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { PaperPlaneTilt, SealCheck } from '@phosphor-icons/react';
 
 const INDUSTRIES = [
   'Restaurants & Food',
@@ -154,7 +155,7 @@ export default function Contact() {
                 'Sending…'
               ) : (
                 <>
-                  <i className="ph-duotone ph-paper-plane-tilt" aria-hidden="true" />
+                  <PaperPlaneTilt weight="duotone" aria-hidden="true" />
                   Send message
                 </>
               )}
@@ -180,7 +181,7 @@ export default function Contact() {
               <p className="aside-value">Within 24 hours, usually same day</p>
             </div>
             <div className="aside-promise">
-              <i className="ph-duotone ph-seal-check" aria-hidden="true" />
+              <SealCheck weight="duotone" aria-hidden="true" />
               <p>No commitment required. The consult call is free and there's no pressure to hire.</p>
             </div>
           </aside>

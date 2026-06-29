@@ -79,14 +79,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${outfit.variable} ${geistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://formspree.io" />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

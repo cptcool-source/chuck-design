@@ -1,3 +1,5 @@
+import { ChatCircleText, ArrowRight } from '@phosphor-icons/react';
+
 export default function Hero() {
   return (
     <section id="hero" className="hero">
@@ -26,12 +28,12 @@ export default function Hero() {
           </p>
           <div className="hero-cta-group">
             <a href="#contact" className="btn btn--primary">
-              <i className="ph-duotone ph-chat-circle-text" aria-hidden="true" />
+              <ChatCircleText weight="duotone" aria-hidden="true" />
               Get a free quote
             </a>
             <a href="#work" className="btn btn--ghost">
               See our work
-              <i className="ph ph-arrow-right" aria-hidden="true" />
+              <ArrowRight aria-hidden="true" />
             </a>
           </div>
         </div>

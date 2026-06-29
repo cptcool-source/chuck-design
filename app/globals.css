@@ -410,8 +410,8 @@ body::after {
 .svc-card:hover::after  { opacity: 1; }
 .svc-card__icon-wrap { width: 48px; height: 48px; border-radius: 12px; background: color-mix(in srgb, var(--card-color,var(--accent)) 10%, transparent); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background 0.3s; }
 .svc-card:hover .svc-card__icon-wrap { background: color-mix(in srgb, var(--card-color,var(--accent)) 18%, transparent); }
-.svc-card__icon-wrap i { font-size: 26px; color: var(--card-color,var(--accent)); transition: filter 0.3s; }
-.svc-card:hover .svc-card__icon-wrap i { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--card-color,var(--accent)) 65%, transparent)); }
+.svc-card__icon-wrap svg { width: 26px; height: 26px; color: var(--card-color,var(--accent)); transition: filter 0.3s; }
+.svc-card:hover .svc-card__icon-wrap svg { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--card-color,var(--accent)) 65%, transparent)); }
 .svc-card__title { font-size: 17px; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
 .svc-card__desc  { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
@@ -438,7 +438,7 @@ body::after {
 .work { padding: clamp(120px,16vh,200px) 0; overflow-x: hidden; }
 .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .work-card--wide { grid-column: span 2; flex-direction: row !important; align-items: flex-start; gap: 28px; }
-.work-card--wide .work-card__icon { font-size: 52px; flex-shrink: 0; margin-bottom: 0; margin-top: 4px; }
+.work-card--wide .work-card__icon { width: 52px; height: 52px; flex-shrink: 0; margin-bottom: 0; margin-top: 4px; }
 .work-card--wide .work-card__body { display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .work-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -452,13 +452,13 @@ body::after {
 .work-card:hover { transform: translateY(-5px); border-color: transparent; box-shadow: 0 20px 56px rgba(0,0,0,0.12); }
 .work-card:hover::before { opacity: 1; }
 .work-card:hover::after  { opacity: 1; }
-.work-card__icon { font-size: 40px; color: var(--accent); --ph-duotone-opacity: 0.22; line-height: 1; margin-bottom: 4px; transition: filter 0.3s, color 0.3s, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+.work-card__icon { width: 40px; height: 40px; color: var(--accent); line-height: 1; margin-bottom: 4px; transition: filter 0.3s, color 0.3s, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
 .work-card:hover .work-card__icon { color: var(--card-color); filter: drop-shadow(0 0 8px color-mix(in srgb, var(--card-color) 55%, transparent)); transform: translateY(-3px) scale(1.06); }
 .work-card__eyebrow { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
 .work-card__title { letter-spacing: -0.02em; color: var(--text); line-height: 1.15; }
 .work-card__desc  { font-size: 14px; color: var(--text-muted); line-height: 1.65; flex: 1; }
 .work-card__link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 8px; transition: color 0.2s, gap 0.2s; }
-.work-card__link i { font-size: 14px; }
+.work-card__link svg { width: 14px; height: 14px; }
 .work-card:hover .work-card__link { color: var(--accent-dark); gap: 10px; }
 
 /* ── About ─────────────────────────────────────────────────────────────────── */
@@ -468,7 +468,7 @@ body::after {
 .about__body { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; text-wrap: pretty; }
 .about__body:last-of-type { margin-bottom: 28px; }
 .about__email { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--accent); transition: color 0.2s; }
-.about__email i { font-size: 20px; }
+.about__email svg { width: 20px; height: 20px; }
 .about__email:hover { color: var(--accent-dark); }
 .about__areas { padding-top: 60px; }
 .about__areas-label { font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
@@ -513,7 +513,7 @@ body::after {
 .aside-value--link { color: var(--accent); transition: color 0.2s; }
 .aside-value--link:hover { color: var(--accent-dark); }
 .aside-promise { display: flex; align-items: flex-start; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin-top: 8px; }
-.aside-promise i { font-size: 22px; color: #2D9E6B; --ph-duotone-opacity:.25; flex-shrink: 0; margin-top: 1px; }
+.aside-promise svg { width: 22px; height: 22px; color: #2D9E6B; flex-shrink: 0; margin-top: 1px; }
 .aside-promise p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
@@ -533,7 +533,7 @@ body::after {
 .services-grid--asymmetric .svc-card:first-child { grid-column: span 2; flex-direction: row; align-items: flex-start; gap: 28px; padding: 40px 36px; }
 .services-grid--asymmetric .svc-card:last-child  { grid-column: span 3; flex-direction: row; align-items: center; gap: 28px; padding: 28px 32px; }
 .svc-card--featured .svc-card__icon-wrap { flex-shrink: 0; width: 56px; height: 56px; }
-.svc-card--featured .svc-card__icon-wrap i { font-size: 32px; }
+.svc-card--featured .svc-card__icon-wrap svg { width: 32px; height: 32px; }
 .svc-card__feature-body { flex: 1; }
 .svc-card--featured .svc-card__desc { font-size: 15px; margin-bottom: 16px; }
 .svc-card__list { display: flex; flex-direction: column; gap: 8px; }
@@ -619,7 +619,7 @@ body::after {
   .services-grid--asymmetric .svc-card:last-child  { grid-column: span 2; }
   .work-grid { grid-template-columns: 1fr; }
   .work-card--wide { flex-direction: column !important; gap: 12px; }
-  .work-card--wide .work-card__icon { font-size: 40px; margin-top: 0; }
+  .work-card--wide .work-card__icon { width: 40px; height: 40px; margin-top: 0; }
   .portfolio-rail .portfolio-card { flex: 0 0 min(360px, 82vw); }
   .process__steps { grid-template-columns: repeat(2,1fr); }
   .process__rail  { display: none; }

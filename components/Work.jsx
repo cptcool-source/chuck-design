@@ -1,24 +1,26 @@
 'use client';
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ForkKnife, Wrench, Stethoscope, ArrowRight, ArrowsOut } from '@phosphor-icons/react';
 
 const WORK_CARDS = [
   {
-    icon: 'ph-duotone ph-fork-knife',
+    Icon: ForkKnife,
     eyebrow: 'Restaurants & Food',
     title: 'Sites that fill tables',
     desc: 'Menus that load on a phone, reservation links that actually work, and local SEO that puts you in front of hungry customers.',
     color: '#E05C3A',
   },
   {
-    icon: 'ph-duotone ph-wrench',
+    Icon: Wrench,
     eyebrow: 'Home Services & Trades',
     title: 'More calls, less driving around',
     desc: 'Service-area pages, click-to-call buttons, and Google Business Profiles that rank for "near me" searches.',
     color: '#4A90D9',
   },
   {
-    icon: 'ph-duotone ph-stethoscope',
+    Icon: Stethoscope,
     eyebrow: 'Health, Wellness & Professional',
     title: 'Build trust before they arrive',
     desc: 'Clean, credible sites for practitioners, coaches, and professionals who need clients to feel confident before the first appointment.',
@@ -115,7 +117,7 @@ export default function Work({ onOpenLightbox }) {
                 <h3 className="work-card__title">{card.title}</h3>
                 <p className="work-card__desc">{card.desc}</p>
                 <a href="#contact" className="work-card__link">
-                  Get a free quote <i className="ph ph-arrow-right" aria-hidden="true" />
+                  Get a free quote <ArrowRight aria-hidden="true" />
                 </a>
               </>
             );
@@ -125,7 +127,7 @@ export default function Work({ onOpenLightbox }) {
                 className={`work-card reveal-up${isWide ? ' work-card--wide' : ''}`}
                 style={{ '--card-color': card.color, '--delay': `${i * 100}ms` }}
               >
-                <i className={`work-card__icon ${card.icon}`} aria-hidden="true" />
+                <card.Icon className="work-card__icon" weight="duotone" aria-hidden="true" />
                 {isWide ? (
                   <div className="work-card__body">{cardContent}</div>
                 ) : cardContent}
@@ -142,7 +144,7 @@ export default function Work({ onOpenLightbox }) {
 
         <div className="portfolio-cta-row" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
           <Link href="/portfolio" className="work-card__link" style={{ fontSize: '14px' }}>
-            View full portfolio <i className="ph ph-arrow-right" aria-hidden="true" />
+            View full portfolio <ArrowRight aria-hidden="true" />
           </Link>
         </div>
 
@@ -163,15 +165,16 @@ export default function Work({ onOpenLightbox }) {
                 aria-label={`View ${item.title}`}
               >
                 <div className="portfolio-card__img-wrap">
-                  <img
+                  <Image
                     src={item.img}
                     alt={item.title}
+                    fill
+                    sizes="min(360px, 82vw)"
                     className="portfolio-card__img"
-                    loading="lazy"
                   />
                   <div className="portfolio-card__overlay" aria-hidden="true">
                     <span className="portfolio-card__cta">
-                      <i className="ph ph-arrows-out" />
+                      <ArrowsOut />
                     </span>
                   </div>
                 </div>

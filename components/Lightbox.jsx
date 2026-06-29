@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { X } from '@phosphor-icons/react';
 
 export default function Lightbox({ open, src, alt, onClose }) {
   const imgRef      = useRef(null);
@@ -105,7 +106,7 @@ export default function Lightbox({ open, src, alt, onClose }) {
         onClick={onClose}
         aria-label="Close image preview"
       >
-        <i className="ph ph-x" aria-hidden="true" />
+        <X aria-hidden="true" />
       </button>
       <div className="lightbox__stage" ref={stageRef}>
         <img
