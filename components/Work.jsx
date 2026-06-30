@@ -1,8 +1,9 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ForkKnife, Wrench, Stethoscope, ArrowRight, ArrowsOut } from '@phosphor-icons/react';
+import Lightbox from '@/components/Lightbox';
 
 const WORK_CARDS = [
   {
@@ -49,8 +50,30 @@ const PORTFOLIO = [
   },
 ];
 
-export default function Work({ onOpenLightbox }) {
+export default function Work() {
   const railRef = useRef(null);
+  const [lightbox, setLightbox] = useState({ open: false, src: '', alt: '' });
+  const scrollLockY = useRef(0);
+
+  function openLightbox(src, alt) {
+    scrollLockY.current = window.scrollY;
+    setLightbox({ open: true, src, alt });
+    document.body.style.overflow  = 'hidden';
+    document.body.style.position  = 'fixed';
+    document.body.style.top       = `-${scrollLockY.current}px`;
+    document.body.style.left      = '0';
+    document.body.style.right     = '0';
+  }
+
+  function closeLightbox() {
+    setLightbox(prev => ({ ...prev, open: false }));
+    document.body.style.overflow  = '';
+    document.body.style.position  = '';
+    document.body.style.top       = '';
+    document.body.style.left      = '';
+    document.body.style.right     = '';
+    window.scrollTo(0, scrollLockY.current);
+  }
 
   useEffect(() => {
     const rail = railRef.current;
@@ -92,6 +115,7 @@ export default function Work({ onOpenLightbox }) {
   }, []);
 
   return (
+    <>
     <section id="work" className="work">
       <div className="section-inner">
         <header className="section-header reveal-up">
@@ -161,7 +185,7 @@ export default function Work({ onOpenLightbox }) {
                 className="portfolio-card reveal-up"
                 role="listitem"
                 style={{ '--delay': `${i * 100}ms` }}
-                onClick={() => onOpenLightbox(item.img, item.title)}
+                onClick={() => openLightbox(item.img, item.title)}
                 aria-label={`View ${item.title}`}
               >
                 <div className="portfolio-card__img-wrap">
@@ -189,5 +213,7 @@ export default function Work({ onOpenLightbox }) {
         </div>
       </div>
     </section>
+    <Lightbox {...lightbox} onClose={closeLightbox} />
+    </>
   );
 }

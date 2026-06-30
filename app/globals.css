@@ -290,15 +290,28 @@ body::after {
   background: #111111;
 }
 .hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  bottom: -20%; right: -10%;
-  width: 70%; height: 90%;
-  background: radial-gradient(ellipse, rgba(224,92,58,0.13) 0%, transparent 65%);
-  pointer-events: none;
-}
+.hero-bg::before { display: none; }
 .hero-photo, .orb { display: none; }
+
+/* Scroll-pinned orb — GSAP animates opacity + scale */
+.hero-orb {
+  position: absolute;
+  top: 50%; left: 55%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 900px);
+  height: min(90vw, 900px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(224,92,58,0.60) 0%,
+    rgba(224,92,58,0.20) 30%,
+    transparent 70%
+  );
+  filter: blur(72px);
+  pointer-events: none;
+  will-change: transform, opacity;
+  opacity: 0.28; /* default for mobile / reduced-motion */
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -306,6 +319,34 @@ body::after {
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
+}
+
+/* ── Hero chapters ─────────────────────────────────────────────────────────── */
+.hero-chapters {
+  margin-bottom: 44px;
+}
+.hero-ch {
+  display: block;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: clamp(64px, 11.5vw, 152px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  will-change: transform, opacity;
+}
+.hero-ch + .hero-ch { margin-top: 0.05em; }
+.hero-ch1 { font-weight: 800; color: #F5F3EE; }
+.hero-ch2 { font-weight: 300; color: rgba(245,243,238,0.38); }
+.hero-ch3 { font-weight: 300; }
+.hero-ch3 em { font-style: italic; color: var(--accent); }
+
+.hero-reveal { will-change: transform, opacity; }
+
+/* Disable the old CSS fade-ups inside the new hero-reveal wrapper */
+.hero-reveal .hero-sub,
+.hero-reveal .hero-cta-group {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 .eyebrow {
   display: flex;
@@ -595,6 +636,13 @@ body::after {
 .skip-link:focus { top: 12px; outline: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
+/* ── Hero: initial invisible state for animated desktop (prevents FOUC) ───── */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .hero-ch,
+  .hero-reveal { opacity: 0; }
+  /* .hero-orb stays at 0.28 — visible from load as Chapter 1 */
+}
+
 /* ── Reduced motion ────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -604,6 +652,8 @@ body::after {
   .eyebrow-dot { animation: none; }
   .hero-title { opacity: 1 !important; animation: none !important; }
   .hero-sub, .hero-cta-group, .eyebrow { animation: none; opacity: 1; transform: none; }
+  .hero-ch, .hero-reveal { opacity: 1 !important; transform: none !important; }
+  .hero-orb { opacity: 0.28 !important; transform: translate(-50%, -50%) !important; }
   .title-reveal .section-title { transform: none; transition: none; }
   .svc-card.reveal-up, .portfolio-card.reveal-up, .work-card.reveal-up { transform: none; }
   .contact-rule { width: 100%; opacity: 1; transition: none; }
@@ -633,6 +683,8 @@ body::after {
   .nav-toggle { display: flex; }
   .br-desktop { display: none; }
   .hero-content { padding-top: 40px; padding-bottom: 48px; }
+  .hero-ch { font-size: clamp(52px, 14vw, 80px); }
+  .hero-chapters { margin-bottom: 32px; }
   .hero-cta-group { flex-direction: column; }
   .hero-cta-group .btn { width: 100%; justify-content: center; }
   .services-grid { grid-template-columns: 1fr; }
