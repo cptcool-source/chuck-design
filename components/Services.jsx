@@ -1,57 +1,50 @@
 'use client';
 import { useEffect } from 'react';
-import { Monitor, MagnifyingGlassPlus, MapPin, ShareNetwork, ShieldCheck, Headset } from '@phosphor-icons/react';
+import { Monitor, MagnifyingGlassPlus, MapPin, ShareNetwork, ShieldCheck } from '@phosphor-icons/react';
 
 const SERVICES = [
   {
     id: 'web-design',
     Icon: Monitor,
     title: 'Web Design & Development',
-    desc: 'Custom sites designed to look great, load fast, and turn visitors into customers.',
+    desc: 'Custom sites built from scratch — designed to load fast, look great on every device, and turn visitors into customers.',
     featured: true,
     list: [
-      'Designed from scratch — no templates',
+      'Designed from scratch — no templates, no page builders',
       'Mobile-first, responsive on every screen',
-      'Search-optimized structure from day one',
-      'Fast load times — under 2 seconds',
+      'Technical SEO and Google Analytics built in from day one',
+      'Fast load times — 90+ PageSpeed score at launch',
     ],
     color: '#E05C3A',
   },
   {
     id: 'seo',
     Icon: MagnifyingGlassPlus,
-    title: 'Local SEO',
-    desc: 'Show up first when customers in your area search for what you offer.',
+    title: 'Built for Search',
+    desc: 'Every site ships with the technical foundation Google needs — proper structure, schema markup, fast load times, and Search Console connected at launch.',
     color: '#4A90D9',
   },
   {
     id: 'gbp',
     Icon: MapPin,
     title: 'Google Business Profile',
-    desc: 'Set up, optimize, and manage your GBP listing to dominate the local map pack.',
+    desc: 'A fully optimized GBP listing — set up, verified, and handed off to you. Shows up right in Google Maps and search results when local customers are looking.',
     color: '#2D9E6B',
   },
   {
     id: 'social',
     Icon: ShareNetwork,
-    title: 'Social Media Setup',
-    desc: 'Brand-consistent profiles on the channels your customers actually use.',
+    title: 'Social Profile Launch',
+    desc: 'The right accounts created, your branding applied, and everything handed off ready to use. No content management — just a professional presence, set up correctly from the start.',
     color: '#8B5CF6',
   },
   {
-    id: 'maintenance',
-    Icon: ShieldCheck,
-    title: 'Website Maintenance',
-    desc: 'Monthly updates, security patches, backups, and uptime monitoring — so you never think about it.',
-    color: '#F59E0B',
-  },
-  {
     id: 'care',
-    Icon: Headset,
-    title: 'Priority Support & Site Care',
-    desc: 'When something needs to change — a menu update, a new page, a broken link — it gets done same day. No tickets, no waiting, no extra charge.',
+    Icon: ShieldCheck,
+    title: 'Site Care Plan',
+    desc: 'Monthly backups, updates, and uptime monitoring so your site stays healthy. Routine requests handled within 48 hours. Urgent issues — site down, broken form — within 24 hours. One person, no tickets.',
     wide: true,
-    color: '#E05C3A',
+    color: '#F59E0B',
   },
 ];
 

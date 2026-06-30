@@ -20,7 +20,7 @@ const STEPS = [
   {
     num: '04',
     title: 'Launch',
-    desc: 'Hosting, domain setup, and Google Business Profile all handled. You get the keys and the training to use them.',
+    desc: 'Hosting, domain setup, Google Analytics, and Search Console all connected. You get the keys, the credentials, and a walkthrough so you know exactly what you have.',
   },
 ];
 
