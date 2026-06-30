@@ -207,13 +207,12 @@ body::after {
   height: 64px;
   display: flex;
   align-items: center;
-  transition: background 0.4s, border-color 0.4s, opacity 0.4s;
-  opacity: 0;
-  pointer-events: none;
+  background: rgba(0,0,0,0.50);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.35s, border-color 0.35s, backdrop-filter 0.35s;
 }
 .site-nav.scrolled {
-  opacity: 1;
-  pointer-events: auto;
   background: rgba(242,240,237,0.94);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
