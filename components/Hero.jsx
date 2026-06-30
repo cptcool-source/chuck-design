@@ -32,7 +32,7 @@ export default function Hero() {
           scrollTrigger: {
             trigger:      sectionRef.current,
             start:        'top top',
-            end:          '+=180%',
+            end:          '+=210%',
             pin:          true,
             scrub:        1.2,
             anticipatePin: 1,
@@ -73,6 +73,19 @@ export default function Hero() {
           5.2
         );
 
+        // Exit: DESIGNS + built to + subtext dissolve
+        tl.to(
+          [ch1Ref.current, ch2Ref.current, revealRef.current],
+          { opacity: 0, ease: 'power1.in', duration: 0.8 },
+          6.5
+        );
+
+        // Exit: lead. slides right + swells
+        tl.to(ch3Ref.current,
+          { x: '15vw', scale: 1.12, ease: 'power2.in', duration: 1.0 },
+          6.5
+        );
+
         return () => {};
       }
     );
@@ -84,7 +97,7 @@ export default function Hero() {
         gsap.set(orbRef.current, { opacity: 0.45, scale: 1 });
         gsap.set(
           [ch1Ref.current, ch2Ref.current, ch3Ref.current, revealRef.current],
-          { opacity: 1, x: 0, y: 0, skewX: 0 }
+          { opacity: 1, x: 0, y: 0, skewX: 0, scale: 1 }
         );
         return () => {};
       }
