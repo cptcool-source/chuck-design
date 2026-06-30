@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import { Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import CursorFollower from '@/components/CursorFollower';
 import PortfolioFloatBtn from '@/components/PortfolioFloatBtn';
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
         {children}
         <PortfolioFloatBtn />
         <CursorFollower />
+        <Analytics />
       </body>
     </html>
   );
