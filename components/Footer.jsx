@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { YoutubeLogo, TiktokLogo, InstagramLogo } from '@phosphor-icons/react';
 
 const SOCIALS = [
@@ -20,7 +21,10 @@ export default function Footer() {
           </span>
         </span>
 
-        <span className="footer-copy">© {year} chuck design · North Port, FL</span>
+        <span className="footer-copy">
+          © {year} chuck design · North Port, FL &nbsp;·&nbsp;{' '}
+          <Link href="/privacy" style={{ color: 'inherit', textDecoration: 'underline' }}>Privacy</Link>
+        </span>
 
         <nav className="footer-social" aria-label="Social media">
           {SOCIALS.map((s, i) =>
