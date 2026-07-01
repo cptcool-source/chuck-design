@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
 
 export default function CursorFollower() {
   const cursorRef = useRef(null);
@@ -10,40 +9,14 @@ export default function CursorFollower() {
     if (!el) return;
     if (window.matchMedia('(hover: none)').matches) return;
 
-    gsap.set(el, { xPercent: -50, yPercent: -50, x: -200, y: -200 });
+    let cleanup = () => {};
 
-    const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' });
-    const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
+    import('gsap').then(({ default: gsap }) => {
+      if (!cursorRef.current) return;
+      cleanup = setupCursor(gsap, el);
+    });
 
-    let visible = false;
-
-    function onMove(e) {
-      if (!visible) {
-        gsap.to(el, { opacity: 1, duration: 0.4 });
-        visible = true;
-      }
-      xTo(e.clientX);
-      yTo(e.clientY);
-    }
-
-    function onLeave() {
-      gsap.to(el, { opacity: 0, duration: 0.3 });
-      visible = false;
-    }
-
-    function onEnter() {
-      if (visible) gsap.to(el, { opacity: 1, duration: 0.3 });
-    }
-
-    window.addEventListener('mousemove', onMove);
-    document.documentElement.addEventListener('mouseleave', onLeave);
-    document.documentElement.addEventListener('mouseenter', onEnter);
-
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      document.documentElement.removeEventListener('mouseleave', onLeave);
-      document.documentElement.removeEventListener('mouseenter', onEnter);
-    };
+    return () => cleanup();
   }, []);
 
   return (
@@ -54,4 +27,41 @@ export default function CursorFollower() {
       </svg>
     </div>
   );
+}
+
+function setupCursor(gsap, el) {
+  gsap.set(el, { xPercent: -50, yPercent: -50, x: -200, y: -200 });
+
+  const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' });
+  const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
+
+  let visible = false;
+
+  function onMove(e) {
+    if (!visible) {
+      gsap.to(el, { opacity: 1, duration: 0.4 });
+      visible = true;
+    }
+    xTo(e.clientX);
+    yTo(e.clientY);
+  }
+
+  function onLeave() {
+    gsap.to(el, { opacity: 0, duration: 0.3 });
+    visible = false;
+  }
+
+  function onEnter() {
+    if (visible) gsap.to(el, { opacity: 1, duration: 0.3 });
+  }
+
+  window.addEventListener('mousemove', onMove);
+  document.documentElement.addEventListener('mouseleave', onLeave);
+  document.documentElement.addEventListener('mouseenter', onEnter);
+
+  return () => {
+    window.removeEventListener('mousemove', onMove);
+    document.documentElement.removeEventListener('mouseleave', onLeave);
+    document.documentElement.removeEventListener('mouseenter', onEnter);
+  };
 }

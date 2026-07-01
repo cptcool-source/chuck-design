@@ -82,7 +82,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${outfit.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://formspree.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -94,8 +93,8 @@ export default function RootLayout({ children }) {
         <CursorFollower />
         <Analytics />
         <SpeedInsights />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-X5EHPW0YEP" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">{`
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-X5EHPW0YEP" strategy="lazyOnload" />
+        <Script id="google-analytics" strategy="lazyOnload">{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
