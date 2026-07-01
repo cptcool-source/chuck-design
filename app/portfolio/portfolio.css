@@ -40,6 +40,7 @@
 
 /* ── Stage ──────────────────────────────────────────────────────────────────── */
 .pf-stage {
+  --card-w: 560px;
   position: relative;
   width: 100%;
   height: 100svh;
@@ -49,7 +50,6 @@
 
 /* ── Cards ──────────────────────────────────────────────────────────────────── */
 .pf-card {
-  --card-w: 560px;
   --card-r: 14px;
   --img-r:  7px;
   --pad:    10px;
@@ -110,6 +110,35 @@
   object-position: center;
   display: block;
   pointer-events: none;
+}
+
+/* ── Scroll-to-bottom button ────────────────────────────────────────────────── */
+/* Anchored to the stage, centered under the card: card center sits at top: 52%,
+   so its bottom edge is 52% + half the card's height (card-w * 900/1280 / 2). */
+.pf-scroll-btn {
+  position: absolute;
+  left: 50%;
+  top: calc(52% + (var(--card-w) * 0.3515625) + 32px);
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 250, 248, 0.16);
+  background: rgba(250, 250, 248, 0.06);
+  color: rgba(250, 250, 248, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pf-scroll-btn:hover {
+  background: rgba(250, 250, 248, 0.12);
+  color: #FAFAF8;
+  border-color: rgba(250, 250, 248, 0.3);
 }
 
 /* ── Logo section ───────────────────────────────────────────────────────────── */
@@ -208,12 +237,15 @@
 
 /* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .pf-card { --card-w: 380px; --pad: 8px; }
+  .pf-stage { --card-w: 380px; }
+  .pf-card { --pad: 8px; }
 }
 
 @media (max-width: 700px) {
-  .pf-card { --card-w: 290px; --card-r: 10px; --pad: 7px; --img-r: 5px; }
+  .pf-stage { --card-w: 290px; }
+  .pf-card { --card-r: 10px; --pad: 7px; --img-r: 5px; }
   .pf-header { top: 1.5rem; left: 1.75rem; }
+  .pf-scroll-btn { width: 40px; height: 40px; }
   .pf-logo-section { padding: 4rem 2rem; min-height: 36vh; }
   .pf-footer { padding: 24px 2rem; }
   .pf-footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -221,5 +253,5 @@
 }
 
 @media (max-width: 400px) {
-  .pf-card { --card-w: 240px; }
+  .pf-stage { --card-w: 240px; }
 }

@@ -41,6 +41,7 @@ export default function PortfolioPage() {
   const lockedRef   = useRef(false);
   const cardRefs    = useRef([]);
   const stageRef    = useRef(null);
+  const footerRef   = useRef(null);
   const scrollLockY = useRef(0);
   const [lightbox, setLightbox] = useState({ open: false, src: '', alt: '' });
 
@@ -91,6 +92,10 @@ export default function PortfolioPage() {
   }
 
   function advance(dir) { goTo(activeRef.current + dir); }
+
+  function scrollToBottom() {
+    footerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
 
   function openLightbox(src, alt) {
     scrollLockY.current = window.scrollY;
@@ -199,6 +204,17 @@ export default function PortfolioPage() {
             </div>
           </div>
         ))}
+
+        <button
+          type="button"
+          className="pf-scroll-btn"
+          aria-label="Scroll to bottom of page"
+          onClick={scrollToBottom}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 4v16M6 14l6 6 6-6" />
+          </svg>
+        </button>
       </section>
 
       <section className="pf-logo-section" aria-label="chuck design">
@@ -211,7 +227,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <footer className="pf-footer">
+      <footer className="pf-footer" ref={footerRef}>
         <div className="pf-footer-inner">
           <Link href="/" className="pf-footer-logo">
             chuck<em> design</em>
